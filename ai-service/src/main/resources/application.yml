@@ -1,0 +1,15 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: ai-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+
+ai:
+  api-key: sk-ea85d886e71b4f71b11262f0be52968c  # 替换为实际API密钥
