@@ -1,19 +1,10 @@
 package top.yyf.userservice.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
-
+import top.yyf.userservice.entity.User;
+import top.yyf.userservice.mapper.UserMapper;
 
 @Service
-public class UserService {
-
-    @Autowired
-    private RestTemplate restTemplate;
-
-    public String askAI(String question) {
-        String url = "http://ai-service/api/ai/ask";
-        return restTemplate.postForObject(url, question, String.class);
-    }
+public class UserService extends ServiceImpl<UserMapper, User> {
 }

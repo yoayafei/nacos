@@ -2,11 +2,15 @@ package top.yyf.userservice.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import top.yyf.userservice.entity.User;
 import top.yyf.userservice.response.Result;
+import top.yyf.userservice.service.UserService;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -15,6 +19,9 @@ import java.nio.charset.StandardCharsets;
 public class UserController {
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper = new ObjectMapper();
+
+    @Autowired
+    private UserService userService;
 
     public UserController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -77,4 +84,10 @@ public class UserController {
 //            return new Result("error", "Failed to call Node.js service: " + e.getMessage());
 //        }
 //    }
+
+
+    @GetMapping("/user/{id}")
+    public User getUserById(@PathVariable Integer id) {
+        return userService.getById(id);
+    }
 }
