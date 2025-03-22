@@ -13,3 +13,9 @@ spring:
 
 ai:
   api-key: sk-ea85d886e71b4f71b11262f0be52968c  # 替换为实际API密钥
+
+# application.yml
+aggregation:
+  weather:
+    api-url: "http://v.juhe.cn/hisWeather/weather"  # 聚合数据的历史天气查询接口地址
+    api-key: "04f161bad84723c632e13b388a75d904"  # 替换为实际的聚合数据API密钥
